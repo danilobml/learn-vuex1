@@ -7,10 +7,13 @@
         <button @click="addToCounter(value)">+</button>
     </div>
     <button class="reset" @click="resetCounter">Reset</button>
+    <div>
+        <button class="btn" @click="addRandomNumber">Add random</button>
+    </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
     export default {
         name: 'CounterComp',
         data() {
@@ -22,7 +25,8 @@ import { mapState, mapMutations } from 'vuex';
             ...mapState(['counter'])
         },
         methods: {
-            ...mapMutations(['addToCounter', 'subtractToCounter', 'resetCounter'])
+            ...mapMutations(['addToCounter', 'subtractToCounter', 'resetCounter']),
+            ...mapActions(['addRandomNumber'])
         }
     }
 </script>
@@ -41,6 +45,14 @@ button {
 }
 button.reset{
     width: 6rem;
+    margin-top: 0.6rem;
+}
+button.btn {
+    border-radius: 0.5rem;
+    width: auto;
+    background-color: #41b983;
+    color: white;
+    margin-top: 1rem;
 }
 input {
     text-align: center;
